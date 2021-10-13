@@ -34,3 +34,17 @@ Route::prefix('students')->group(function () {
     Route::get('show/{student}', 'StudentController@show')->name('student.show');
 
 });
+
+//Student routes
+
+Route::prefix('attendancegroups')->group(function () {
+
+    Route::get('','AttendanceGroupController@index')->name('attendancegroup.index');
+    Route::get('create', 'AttendanceGroupController@create')->name('attendancegroup.create');
+    Route::post('store', 'AttendanceGroupController@store')->name('attendancegroup.store');
+    Route::get('edit/{attendancegroup}', 'AttendanceGroupController@edit')->name('attendancegroup.edit');
+    Route::post('update/{attendancegroup}', 'AttendanceGroupController@update')->name('attendancegroup.update');
+    Route::post('delete/{attendancegroup}', 'AttendanceGroupController@destroy' )->name('attendancegroup.destroy');
+    Route::get('show/{attendancegroup}', 'AttendanceGroupController@show')->name('attendancegroup.show');
+
+});

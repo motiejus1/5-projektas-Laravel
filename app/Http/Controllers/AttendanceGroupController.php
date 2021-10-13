@@ -14,7 +14,11 @@ class AttendanceGroupController extends Controller
      */
     public function index()
     {
-        //
+        //PHP
+        // Klases
+        $attendancegroups = AttendanceGroup::all(); //
+        return view("attendancegroup.index", ['attendancegroups'=>$attendancegroups]);
+
     }
 
     /**
@@ -24,7 +28,7 @@ class AttendanceGroupController extends Controller
      */
     public function create()
     {
-        //
+        return view("attendancegroup.create");
     }
 
     /**
@@ -35,7 +39,17 @@ class AttendanceGroupController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $attendancegroup = new AttendanceGroup();
+
+        $attendancegroup->name = $request->group_name;
+        $attendancegroup->description = $request->group_description;
+        $attendancegroup->difficulty = $request->group_difficulty;
+        $attendancegroup->school_id = $request->group_schoolid;
+
+        $attendancegroup->save();
+
+        return redirect()->route("attendancegroup.index");
     }
 
     /**
@@ -44,9 +58,9 @@ class AttendanceGroupController extends Controller
      * @param  \App\AttendanceGroup  $attendanceGroup
      * @return \Illuminate\Http\Response
      */
-    public function show(AttendanceGroup $attendanceGroup)
+    public function show(AttendanceGroup $attendancegroup)
     {
-        //
+        return view('attendancegroup.show', ['attendancegroup' => $attendancegroup]);
     }
 
     /**
@@ -55,9 +69,9 @@ class AttendanceGroupController extends Controller
      * @param  \App\AttendanceGroup  $attendanceGroup
      * @return \Illuminate\Http\Response
      */
-    public function edit(AttendanceGroup $attendanceGroup)
+    public function edit(AttendanceGroup $attendancegroup)
     {
-        //
+        return view('attendancegroup.edit', ['attendancegroup' => $attendancegroup]);
     }
 
     /**
@@ -67,9 +81,17 @@ class AttendanceGroupController extends Controller
      * @param  \App\AttendanceGroup  $attendanceGroup
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AttendanceGroup $attendanceGroup)
+    public function update(Request $request, AttendanceGroup $attendancegroup)
     {
-        //
+        $attendancegroup->name = $request->group_name;
+        $attendancegroup->description = $request->group_description;
+        $attendancegroup->difficulty = $request->group_difficulty;
+        $attendancegroup->school_id = $request->group_schoolid;
+
+        $attendancegroup->save();
+
+        return redirect()->route("attendancegroup.index");
+
     }
 
     /**
@@ -78,8 +100,9 @@ class AttendanceGroupController extends Controller
      * @param  \App\AttendanceGroup  $attendanceGroup
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AttendanceGroup $attendanceGroup)
+    public function destroy(AttendanceGroup $attendancegroup)
     {
-        //
+        $attendancegroup->delete();
+        return redirect()->route("attendancegroup.index");
     }
 }

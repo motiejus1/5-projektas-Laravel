@@ -5,6 +5,14 @@ namespace App\Http\Controllers;
 use App\Student;
 use Illuminate\Http\Request;
 
+
+//Description pildymo laukeliams pritaikyti Summernote.
+
+//1.summernote biblioteka nuoroda/arba parsisiusdavom x
+//2. header.php ????? layouts/app.blade.php x
+//3. formoje description pakeisdavo input i textarea
+//4. jquery plaeidimo koda
+
 class StudentController extends Controller
 {
     /**
