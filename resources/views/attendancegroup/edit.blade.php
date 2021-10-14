@@ -24,7 +24,7 @@
 
                             <div class="col-md-6">
                                 {{-- <input id="name" type="text" class="form-control" name="group_description" value="{{$attendancegroup->description}}" required autofocus> --}}
-                            <textarea id="summernote" name="group_description">
+                            <textarea class="summernote" name="group_description">
                                 {{$attendancegroup->description}}
                             </textarea>
                             </div>
@@ -60,4 +60,9 @@
         </div>
     </div>
 </div>
+<script>
+    $(document).ready(function() {
+        $('.summernote').summernote();
+    });
+</script>
 @endsection
